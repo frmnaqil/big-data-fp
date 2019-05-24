@@ -13,6 +13,6 @@ with open('dataset_lite.csv', newline='') as File:
     # https://www.edureka.co/community/1792/how-to-print-array-list-without-brackets-in-python
     # https://www.daniweb.com/programming/software-development/threads/372151/getting-rid-of-brackets-and-quotations#
     for row in reader:
-        clean_row = ', '.join(row)
+        clean_row = ','.join(row)
         producer.send('test', value=clean_row)
         print(clean_row)

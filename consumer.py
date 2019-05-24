@@ -13,14 +13,15 @@ consumer = KafkaConsumer(
 # https://stackoverflow.com/questions/46001807/dump-the-kafka-kafka-python-to-a-txt-file
 
 message_buffer = []
-buffer_size = 5000
+buffer_size = 5001
 batch_counter = 0
 
 for message in consumer:
     message_buffer.append(message.value)
+    print(len(message_buffer))
     if len(message_buffer) >= buffer_size:
         for _message in message_buffer:
             f = open('batch%s.csv' % batch_counter, 'a')
             f.write("%s\n" % _message)
-            message_buffer = []
+        message_buffer = []
         batch_counter = batch_counter + 1
